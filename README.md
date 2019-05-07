@@ -1,6 +1,6 @@
 # 如何使用
 ## 安装组件
->composer require zcmzc/dingdingRobot
+>composer require zcmzc/dingding-robot
 ## 新建Robot 类
 ```php
 <?php
