@@ -1,5 +1,5 @@
 {
-    "name": "administrator/dingding-robot",
+    "name": "zcmzc/dingdingRobot",
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
