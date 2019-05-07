@@ -27,8 +27,13 @@ abstract class AbstractRobot implements RobotInterface
     {
         $response = $this->client->request('POST', $this->getWebhook(), [
             'json' => $message->format(),
-        ]);
+        ] + $this->getOptions());
         return $this->afterSend($response);
+    }
+
+    protected function getOptions()
+    {
+        return [];
     }
 
     protected function afterSend(ResponseInterface $response): array
