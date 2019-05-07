@@ -1,0 +1,33 @@
+{
+    "name": "administrator/dingding-robot",
+    "require": {
+        "php": ">=7.2",
+        "ext-json": "*",
+        "psr/container": "^1.0",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0.0",
+        "friendsofphp/php-cs-fixer": "^2.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "DingRobot\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DingRobotTest\\": "test/"
+        }
+    },
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://packagist.laravel-china.org"
+      }
+    ],
+    "scripts": {
+      "test": "./vendor/bin/phpunit -c phpunit.xml --colors=always",
+      "cs-fix": "php-cs-fixer fix $1"
+    }
+}
