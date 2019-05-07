@@ -10,7 +10,9 @@ use DingRobot\Message\TextMessage;
 use DingRobot\RobotInterface;
 use DingRobotTest\Robot\Test2Robot;
 use DingRobotTest\Robot\TestRobot;
-use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Psr7\Response;
+use Mockery;
 use PHPUnit\Framework\TestCase;
 
 class RobotTest extends TestCase
@@ -29,8 +31,11 @@ class RobotTest extends TestCase
 
     protected function setUp()
     {
-        $this->robot = new TestRobot(new Client());
-        $this->robot2 = new Test2Robot(new Client());
+        $client = Mockery::mock(ClientInterface::class);
+        $client->shouldReceive('request')->andReturn((new Response(200, [], json_encode($this->successResult))));
+        /* @var ClientInterface $client */
+        $this->robot = new TestRobot($client);
+        $this->robot2 = new Test2Robot($client);
     }
 
     public function testTextMessage()
@@ -45,9 +50,6 @@ class RobotTest extends TestCase
         $this->assertEquals($this->successResult, $result);
     }
 
-    /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
     public function testMarkdownMessage()
     {
         $text = <<<MARKDOWN
@@ -60,9 +62,11 @@ MARKDOWN;
         $this->assertEquals($this->successResult, $result);
     }
 
+    /**
+     * @depends testTextMessage
+     */
     public function testMultiRobots()
     {
-        $this->assertEquals($this->successResult, $this->robot->send(new TextMessage('我是'.$this->robot->getName())));
         $this->assertEquals($this->successResult, $this->robot2->send(new TextMessage('我是'.$this->robot2->getName())));
     }
 }
