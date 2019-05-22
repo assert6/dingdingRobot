@@ -1,5 +1,6 @@
 {
     "name": "zcmzc/dingding-robot",
+    "description": "钉钉机器人",
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
