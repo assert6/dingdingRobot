@@ -10,7 +10,7 @@ trait AtTrait
     /**
      * @var array
      */
-    protected $atMobiles;
+    protected $atMobiles = [];
 
     /**
      * @var bool
