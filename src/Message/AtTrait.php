@@ -25,7 +25,7 @@ trait AtTrait
 
     public function ats(array $mobiles)
     {
-        $this->atMobiles[] = array_merge($this->atMobiles, $mobiles);
+        $this->atMobiles = array_merge($this->atMobiles, $mobiles);
         return $this;
     }
 
