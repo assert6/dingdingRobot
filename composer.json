@@ -1,5 +1,5 @@
 {
-    "name": "zcmzc/dingding-robot",
+    "name": "assert6/dingding-robot",
     "description": "钉钉机器人",
     "require": {
         "php": ">=7.2",
